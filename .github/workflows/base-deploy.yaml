@@ -157,7 +157,7 @@ jobs:
             echo '${{ needs.information.outputs.architectures }}' \
             | jq --raw-output '.[]'
           ); do
-            images+=("ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}/${architecture}:${{ needs.information.outputs.version }}")
+            images+=("ghcr.io/connum/${{ needs.information.outputs.slug }}/${architecture}:${{ needs.information.outputs.version }}")
           done
           
           docker manifest create \
