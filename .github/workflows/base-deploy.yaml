@@ -160,14 +160,12 @@ jobs:
             images+=("ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}/${architecture}:${{ needs.information.outputs.version }}")
           done
           
-          OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
-
           docker manifest create \
-             "ghcr.io/$OWNER/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
+             "ghcr.io/connum/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
              "${images[@]}"
 
           docker manifest create \
-             "ghcr.io/$OWNER/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}" \
+             "ghcr.io/connum/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}" \
              "${images[@]}"
 
       - name: 🏗  Login to GitHub Container Registry
