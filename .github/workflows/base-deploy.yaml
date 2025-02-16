@@ -79,6 +79,7 @@ jobs:
         id: flags
         run: |
           OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+          echo "OWNER=${OWNER}" >> $GITHUB_ENV
           
           echo "date=$(date +"%Y-%m-%dT%H:%M:%SZ")" >> "$GITHUB_OUTPUT"
           from=$(yq --no-colors eval ".build_from.${{ matrix.architecture }}" "${{ needs.information.outputs.build }}")
