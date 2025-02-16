@@ -163,11 +163,11 @@ jobs:
           OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
 
           docker manifest create \
-             "ghcr.io/${OWNER}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
+             "ghcr.io/$OWNER/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
              "${images[@]}"
 
           docker manifest create \
-             "ghcr.io/${OWNER}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}" \
+             "ghcr.io/$OWNER/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}" \
              "${images[@]}"
 
       - name: 🏗  Login to GitHub Container Registry
