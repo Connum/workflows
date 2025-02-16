@@ -179,6 +179,6 @@ jobs:
         # yamllint disable rule:line-length
         run: |
           docker manifest push \
-            "ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}"
+            "ghcr.io/connum/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}"
           docker manifest push \
-            "ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}"
+            "ghcr.io/connum/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}"
