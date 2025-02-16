@@ -159,6 +159,9 @@ jobs:
           ); do
             images+=("ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}/${architecture}:${{ needs.information.outputs.version }}")
           done
+          
+          OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+          echo "OWNER=${OWNER}" >> $GITHUB_ENV
 
           docker manifest create \
              "ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
