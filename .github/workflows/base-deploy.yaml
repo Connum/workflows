@@ -157,15 +157,15 @@ jobs:
             echo '${{ needs.information.outputs.architectures }}' \
             | jq --raw-output '.[]'
           ); do
-            images+=("ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}/${architecture}:${{ needs.information.outputs.version }}")
+            images+=("ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}/${architecture}:${{ needs.information.outputs.version }}")
           done
 
           docker manifest create \
-             "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
+             "ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.environment }}" \
              "${images[@]}"
 
           docker manifest create \
-             "ghcr.io/${{ github.repository_owner }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}" \
+             "ghcr.io/${{ env.OWNER }}/${{ needs.information.outputs.slug }}:${{ needs.information.outputs.version }}" \
              "${images[@]}"
 
       - name: 🏗  Login to GitHub Container Registry
